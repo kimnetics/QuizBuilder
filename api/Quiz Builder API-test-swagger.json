@@ -1,0 +1,314 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "2022-10-01T20:28:59Z",
+    "title" : "Quiz Builder API"
+  },
+  "host" : "2iv8ek7ms1.execute-api.us-west-1.amazonaws.com",
+  "basePath" : "/test",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/quiz" : {
+      "get" : {
+        "description" : "Get the list of quizzes for the user.",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      },
+      "post" : {
+        "description" : "Create a quiz.",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      }
+    },
+    "/quiz/{quizId}" : {
+      "get" : {
+        "description" : "Get a quiz.",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "quizId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      },
+      "put" : {
+        "description" : "Update the title and questions for a quiz.",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "quizId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      },
+      "delete" : {
+        "description" : "Delete a quiz.",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "quizId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      }
+    },
+    "/quiz/{quizId}/admin/delete" : {
+      "post" : {
+        "description" : "Administrator Only - Delete a quiz.",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "quizId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      }
+    },
+    "/quiz/{quizId}/admin/reset" : {
+      "post" : {
+        "description" : "Administrator Only - Set quiz published and deleted to false.",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "quizId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      }
+    },
+    "/quiz/{quizId}/publish" : {
+      "post" : {
+        "description" : "Publish a quiz.",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "quizId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      }
+    },
+    "/quiz/{quizId}/solutions" : {
+      "get" : {
+        "description" : "Get all solutions for a quiz.",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "quizId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      }
+    },
+    "/register" : {
+      "post" : {
+        "description" : "Register the user with the Quiz Builder system.",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      }
+    },
+    "/solution" : {
+      "get" : {
+        "description" : "Get the list of solutions for the user.",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      }
+    },
+    "/solution/{quizId}" : {
+      "post" : {
+        "description" : "Submit a solution for a quiz.",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "quizId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      }
+    },
+    "/solution/{quizId}/admin/delete" : {
+      "post" : {
+        "description" : "Administrator Only - Delete all solutions for a quiz.",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "quizId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        },
+        "security" : [ {
+          "QuizBuilderCognitoAuthorizer" : [ "email" ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "QuizBuilderCognitoAuthorizer" : {
+      "type" : "apiKey",
+      "name" : "Authorization",
+      "in" : "header",
+      "x-amazon-apigateway-authtype" : "cognito_user_pools"
+    }
+  },
+  "definitions" : {
+    "Empty" : {
+      "type" : "object",
+      "title" : "Empty Schema"
+    }
+  },
+  "x-amazon-apigateway-policy" : {
+    "Version" : "2012-10-17",
+    "Statement" : [ {
+      "Effect" : "Deny",
+      "Principal" : "*",
+      "Action" : "execute-api:Invoke",
+      "Resource" : "arn:aws:execute-api:us-west-1:227174948683:2iv8ek7ms1/*/*/*",
+      "Condition" : {
+        "NotIpAddress" : {
+          "aws:SourceIp" : "24.11.118.22/24"
+        }
+      }
+    }, {
+      "Effect" : "Allow",
+      "Principal" : "*",
+      "Action" : "execute-api:Invoke",
+      "Resource" : "arn:aws:execute-api:us-west-1:227174948683:2iv8ek7ms1/*/*/*"
+    } ]
+  }
+}

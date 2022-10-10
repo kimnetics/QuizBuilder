@@ -1,0 +1,191 @@
+{
+  "ModelName": "Quiz Builder Data Model",
+  "ModelMetadata": {
+    "Author": "",
+    "DateCreated": "Sep 28, 2022, 09:42 AM",
+    "DateLastModified": "Sep 29, 2022, 03:57 PM",
+    "Description": "",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "3.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "QuizBuilder",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "UserId",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Name",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Email",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "QuizId",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Published",
+          "AttributeType": "BOOL"
+        },
+        {
+          "AttributeName": "Deleted",
+          "AttributeType": "BOOL"
+        },
+        {
+          "AttributeName": "Questions",
+          "AttributeType": "L"
+        },
+        {
+          "AttributeName": "Solutions",
+          "AttributeType": "L"
+        },
+        {
+          "AttributeName": "Score",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "Created",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Modified",
+          "AttributeType": "S"
+        }
+      ],
+      "TableFacets": [
+        {
+          "FacetName": "User",
+          "KeyAttributeAlias": {
+            "PartitionKeyAlias": "UserId",
+            "SortKeyAlias": "UserId"
+          },
+          "TableData": [],
+          "NonKeyAttributes": [
+            "UserId",
+            "Name",
+            "Email",
+            "Created",
+            "Modified"
+          ],
+          "DataAccess": {
+            "MySql": {}
+          }
+        },
+        {
+          "FacetName": "Quiz",
+          "KeyAttributeAlias": {
+            "PartitionKeyAlias": "UserId / QuizId",
+            "SortKeyAlias": "QuizId"
+          },
+          "TableData": [],
+          "NonKeyAttributes": [
+            "UserId",
+            "Name",
+            "QuizId",
+            "Published",
+            "Deleted",
+            "Questions",
+            "Created",
+            "Modified"
+          ],
+          "DataAccess": {
+            "MySql": {}
+          }
+        },
+        {
+          "FacetName": "Solution",
+          "KeyAttributeAlias": {
+            "PartitionKeyAlias": "UserId / QuizId",
+            "SortKeyAlias": "QuizId"
+          },
+          "TableData": [],
+          "NonKeyAttributes": [
+            "UserId",
+            "QuizId",
+            "Solutions",
+            "Score",
+            "Created",
+            "Modified"
+          ],
+          "DataAccess": {
+            "MySql": {}
+          }
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "QuizIdGSI",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "QuizId",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "INCLUDE",
+            "NonKeyAttributes": [
+              "UserId",
+              "Name",
+              "Published",
+              "Deleted",
+              "Questions",
+              "Solutions",
+              "Score",
+              "Created",
+              "Modified"
+            ]
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    }
+  ]
+}
