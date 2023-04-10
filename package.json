@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-security": "^1.5.0"
